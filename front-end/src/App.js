@@ -1,14 +1,12 @@
-import Header from "./components/Header";
+import { Features } from "./components/Feature";
 import Hero from "./components/Hero";
 
 
-function App() {
+export default function App() {
   return (
     <div>
-      <Header />
       <Hero />
+      <Features />
     </div>
   );
 }
-
-export default App;

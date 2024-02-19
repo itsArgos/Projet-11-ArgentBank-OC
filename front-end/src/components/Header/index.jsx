@@ -14,7 +14,7 @@ function Header() {
         />
       </Link>
       <div>
-        <NavLink className="main-nav-item" href="./sign-in.html">
+        <NavLink to="/SignIn" className="main-nav-item" href="./sign-in.html">
           <i class="fa fa-user-circle"></i>
           Sign In
         </NavLink>
