@@ -20,9 +20,9 @@ export default function SignIn() {
             <label htmlFor="remember-me">Remember me</label>
           </div>
 
-          <a href="./user.html" className="sign-in-button">
+          <button className="sign-in-button" type="submit">
             Sign In
-          </a>
+          </button>
         </form>
       </section>
     </main>

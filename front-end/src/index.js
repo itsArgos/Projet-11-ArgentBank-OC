@@ -7,6 +7,7 @@ import SignIn from "./pages/SignIn";
 import Error from "./pages/Error";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
+import Profile from "./components/User";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -16,6 +17,7 @@ root.render(
       <Routes>
         <Route path="/" element={<App />} />
         <Route path='/SignIn' element={<SignIn />} />
+        <Route path ="/Profile" element={<Profile />} />
         <Route path="*" element={<Error />} />
       </Routes>
       <Footer />
