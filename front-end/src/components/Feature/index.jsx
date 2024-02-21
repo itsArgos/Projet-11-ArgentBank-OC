@@ -7,7 +7,7 @@ export function Features() {
       <h2 className="sr-only">Features</h2>
       {data.map((feature, idx) => (
         <div className="feature-item" key={idx}>
-          <img src={feature.img} alt="Chat Icon" className="feature-icon" />
+          <img src={feature.icon} alt="Chat Icon" className="feature-icon" />
           <h3 className="feature-item-title">{feature.title}</h3>
           <p>{feature.description}</p>
         </div>

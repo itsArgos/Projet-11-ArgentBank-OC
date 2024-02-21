@@ -1,5 +1,7 @@
 import "./signin.css";
 
+// const apiConnexion = "http://localhost:3001/api/v1/user/login"
+
 export default function SignIn() {
   return (
     <main className="main bg-dark">
@@ -20,9 +22,9 @@ export default function SignIn() {
             <label htmlFor="remember-me">Remember me</label>
           </div>
 
-          <button className="sign-in-button" type="submit">
+          <a href="/Profile" className="sign-in-button">
             Sign In
-          </button>
+          </a>
         </form>
       </section>
     </main>
