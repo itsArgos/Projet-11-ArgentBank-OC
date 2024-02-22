@@ -1,6 +1,6 @@
 import "./account.css";
 
-import dataAccount from "../../data/dataAccount.json";
+import dataAccount from "../../assets/data/dataAccount.json";
 
 export default function Account() {
   return (

@@ -1,5 +1,5 @@
 import "./feature.css";
-import data from "../../data/dataFeature.json";
+import data from "../../assets/data/dataFeature.json";
 
 export function Features() {
   return (

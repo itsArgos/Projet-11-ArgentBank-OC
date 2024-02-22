@@ -1,4 +1,4 @@
-import Account from "../Account";
+import Account from "../../components/Account";
 import "./user.css";
 
 export default function Profile() {

@@ -10,10 +10,10 @@
   color: #fff;
 }
 
-.bg-dark {
+.bg-dark-signin {
   background-color: #12002b;
-  height: 75vh;
   padding-top: 50px;
+  height: 75vh;
 }
 
 .sign-in-content {

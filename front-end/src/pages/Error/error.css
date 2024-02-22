@@ -2,9 +2,24 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     color: red;
     height: 100vh;
     font-size: 4em;
     text-transform: uppercase;
     background: rgba(0, 0, 0, 0.836);
+}
+
+.error-404 {
+    margin: 0;
+}
+
+.error-navlink {
+    list-style: none;
+    color: wheat;
+    transition: .5s ease;
+}
+
+.error-navlink:hover {
+    color: rgb(3, 91, 133);
 }

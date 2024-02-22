@@ -11,6 +11,8 @@
     margin-bottom: 2rem;
   }
 
-  .bg-dark {
+  .bg-dark-profile {
     background-color: #12002b;
+    padding-top: 10px;
+    height: 80vh;
   }
