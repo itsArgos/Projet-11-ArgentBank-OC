@@ -20,7 +20,7 @@ export default function SignIn() {
     if (email === "" || password === "") {
       alert("Please fill in all fields");
     } else {
-      dispatch(userLogin(email, password, navigate));
+      dispatch(userLogin(email, password, rememberMe, navigate));
     }
   }
 
@@ -63,7 +63,6 @@ export default function SignIn() {
             />
             <label htmlFor="remember-me">Remember me</label>
           </div>
-
           <button type="submit" className="sign-in-button">
             Sign In
           </button>
