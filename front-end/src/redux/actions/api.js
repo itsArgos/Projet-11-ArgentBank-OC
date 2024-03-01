@@ -1,11 +1,11 @@
 // ACTIONS
-const LOGIN_SUCCESS = "LOGIN_SUCCESS";
-const LOGIN_FAILED = "LOGIN_FAILED";
-const FETCH_PROFILE_SUCCESS = "FETCH_PROFILE_SUCCESS";
-const FETCH_PROFILE_FAILED = "FETCH_PROFILE_FAILED";
+export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
+export const LOGIN_FAILED = "LOGIN_FAILED";
+export const FETCH_PROFILE_SUCCESS = "FETCH_PROFILE_SUCCESS";
+export const FETCH_PROFILE_FAILED = "FETCH_PROFILE_FAILED";
 
 // Action de connexion réussie
-function loginSuccess() {
+export function loginSuccess() {
   return { type: LOGIN_SUCCESS };
 }
 

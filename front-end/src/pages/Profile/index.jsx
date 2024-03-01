@@ -19,7 +19,7 @@ export default function Profile() {
       <main className="main bg-dark-profile">
         <div className="header">
           <h1>
-            Welcome back <br />
+            Welcome back <br /> name ici
           </h1>
           <button className="edit-button" onClick={handleEditName}>
             Edit Name
