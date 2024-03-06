@@ -27,8 +27,9 @@ export const userSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(LOGIN_SUCCESS, (state) => {
-        state.logged = true;
+    .addCase(LOGIN_SUCCESS, (state) => {
+      state.logged = true;
+      state.errorMessage = null;
       })
       .addCase(LOGIN_FAILED, (state, action) => {
         state.logged = false;

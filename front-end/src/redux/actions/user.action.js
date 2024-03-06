@@ -94,7 +94,7 @@ export function userLogin(email, password, rememberMe, navigate) {
       localStorage.removeItem("token");
       sessionStorage.removeItem("token");
       dispatch(loginFailed("An error occurred while trying to log in"));
-      console.log("An error occurred while trying to log in:", error);
+      alert("Invalid email or password", error);
     }
   };
 }
