@@ -2,7 +2,7 @@ import "./signin.css";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useState } from "react";
-import { userLogin } from "../../redux/actions/api";
+import { userLogin } from "../../redux/actions/user.action.js";
 
 export default function SignIn() {
   const [email, setEmail] = useState("");

@@ -1,0 +1,153 @@
+swagger: "2.0"
+info:
+  description: Contient tous les points de terminaison API disponibles pour les transactions dans cette base de code
+  version: '1.0.0'
+  title: API de transactions Argent Bank
+
+host: localhost:3001
+basePath: /api/v1
+schemes:
+  - http
+
+paths:
+  /{accountId}:
+    get:
+      tags:
+        - Module de transaction
+      security:
+        - Bearer: []
+      summary: Liste toutes les transactions pour un compte spécifié
+      description: Transaction API pour le compte de mon choix.
+      parameters:
+        - name: accountId
+          in: path
+          required: true
+          type: string
+          description: L'identifiant du compte pour lequel récupérer les transactions.
+      responses:
+        "200":
+          description: récupération réussie des transactions.
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/transaction"
+        "401":
+          description: Non autorisé
+
+  /{accountId}/{transactionId}:
+    get:
+      tags:
+        - Module de transaction
+      security:
+        - Bearer: []
+      summary: Détails d'une transaction spécifique
+      description: Retourne les détails d'une transaction spécifique en utilisant son ID.
+      parameters:
+        - name: accountId
+          in: path
+          required: true
+          type: string
+          description: L'identifiant du compte auquel appartient la transaction.
+        - name: transactionId
+          in: path
+          required: true
+          type: string
+          description: L'identifiant de la transaction à récupérer.
+      responses:
+        "200":
+          description: Détails de la transaction
+          schema:
+            $ref: "#/definitions/transaction"
+        "401":
+          description: Non autorisé
+        "404":
+          description: Transaction non trouvée
+
+    patch:
+      tags:
+        - Module de transaction
+      security:
+        - Bearer: []
+      summary: Modifier une transaction existante
+      description: Permet de modifier les détails d'une transaction existante.
+      parameters:
+        - name: accountId
+          in: path
+          required: true
+          type: string
+          description: L'identifiant du compte auquel appartient la transaction à modifier.
+        - name: transactionId
+          in: path
+          required: true
+          type: string
+          description: L'identifiant de la transaction à modifier.
+        - in: body
+          name: transaction
+          description: Les attributs de la transaction à mettre à jour
+          required: true
+          schema:
+            $ref: "#/definitions/transaction"
+      responses:
+        "200":
+          description: Transaction mise à jour
+        "401":
+          description: Non autorisé
+        "404":
+          description: Transaction non trouvée
+
+    delete:
+      tags:
+        - Module de transaction
+      security:
+        - Bearer: []
+      summary: Supprimer une transaction existante
+      description: Permet de supprimer une transaction existante à partir de son ID.
+      parameters:
+        - name: accountId
+          in: path
+          required: true
+          type: string
+          description: L'identifiant du compte auquel appartient la transaction à supprimer.
+        - name: transactionId
+          in: path
+          required: true
+          type: string
+          description: L'identifiant de la transaction à supprimer.
+      responses:
+        "204":
+          description: Transaction supprimée avec succès
+        "401":
+          description: Non autorisé
+        "404":
+          description: Transaction non trouvée
+
+
+securityDefinitions:
+  Bearer:
+    type: apiKey
+    name: Authorization
+    in: header
+
+definitions:
+  transaction:
+    type: object
+    properties:
+      id:
+        type: string
+        readOnly: true
+      date:
+        type: string
+        format: date
+        readOnly: true
+      amount:
+        type: number
+        readOnly: true
+      balance:
+        type: number
+        readOnly: true
+      category:
+        type: string
+        description: La catégorie de la transaction
+      note:
+        type: string
+        description: Ajout d'une note à la transaction

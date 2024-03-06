@@ -1,9 +1,18 @@
-import "./header.css";
+import React from "react";
+import { NavLink, Link } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 import logo from "/img/argentBankLogo.png";
-import { NavLink } from "react-router-dom";
-import { Link } from "react-router-dom";
+import { logoutUser } from "../../redux/reducers/userReducer";
+import "./header.css";
 
 function Header() {
+  const isAuthenticated = useSelector((state) => state.user.logged);
+  const dispatch = useDispatch();
+
+  const handleLogout = () => {
+    dispatch(logoutUser());
+  };
+
   return (
     <nav className="main-nav">
       <Link to="/" className="main-nav-logo">
@@ -14,10 +23,21 @@ function Header() {
         />
       </Link>
       <div>
-        <NavLink to="/SignIn" className="main-nav-item" href="./sign-in.html">
-          <i className="fa fa-user-circle"></i>
-          Sign In
-        </NavLink>
+        {isAuthenticated ? (
+          <NavLink
+            to="/SignIn"
+            className="main-nav-item"
+            onClick={handleLogout}
+          >
+            <i className="fa fa-sign-out"></i>
+            Logout
+          </NavLink>
+        ) : (
+          <NavLink to="/SignIn" className="main-nav-item">
+            <i className="fa fa-user-circle"></i>
+            Sign In
+          </NavLink>
+        )}
       </div>
     </nav>
   );
