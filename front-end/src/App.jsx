@@ -5,8 +5,13 @@ import Home from "./pages/Home/Home";
 import SignIn from "./pages/SignIn";
 import Profile from "./pages/Profile";
 import Error from "./pages/Error";
+import { fetchProfile } from "./redux/actions/user.action";
+import { useDispatch } from "react-redux";
 
 const App = () => {
+  const dispatch = useDispatch();
+
+  dispatch(fetchProfile());
   return (
     <BrowserRouter>
       <Header />

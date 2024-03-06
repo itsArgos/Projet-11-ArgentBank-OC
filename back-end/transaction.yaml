@@ -10,7 +10,7 @@ schemes:
   - http
 
 paths:
-  /{accountId}:
+  /users/{accountId}/transactions:
     get:
       tags:
         - Module de transaction
@@ -34,7 +34,7 @@ paths:
         "401":
           description: Non autorisé
 
-  /{accountId}/{transactionId}:
+  /users/{accountId}/transactions/{transactionId}:
     get:
       tags:
         - Module de transaction

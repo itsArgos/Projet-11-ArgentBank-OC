@@ -1,4 +1,5 @@
 // EditName.js
+import { useSelector } from "react-redux";
 import "./editname.css";
 
 export default function EditName({ closeModal }) {
@@ -7,6 +8,9 @@ export default function EditName({ closeModal }) {
   };
 
   const isDisabled = true;
+
+  const fistName = useSelector((state) => state.user.userProfile?.firstName);
+  const lastName = useSelector((state) => state.user.userProfile?.lastName);
 
   return (
     <div className="edit-user">
@@ -18,11 +22,21 @@ export default function EditName({ closeModal }) {
         </div>
         <div className="input-text">
           <label htmlFor="FirstName">First name:</label>
-          <input type="text" id="FirstName" disabled={isDisabled} />
+          <input
+            type="text"
+            id="FirstName"
+            disabled={isDisabled}
+            placeholder={fistName}
+          />
         </div>
         <div className="input-text">
           <label htmlFor="LastName">Last name:</label>
-          <input type="text" id="LastName" disabled={isDisabled} />
+          <input
+            type="text"
+            id="LastName"
+            disabled={isDisabled}
+            placeholder={lastName}
+          />
         </div>
         <div className="buttons">
           <button className="edit-button-modal" type="submit">

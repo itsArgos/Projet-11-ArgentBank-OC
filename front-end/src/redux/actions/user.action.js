@@ -3,6 +3,7 @@ export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 export const LOGIN_FAILED = "LOGIN_FAILED";
 export const FETCH_PROFILE_SUCCESS = "FETCH_PROFILE_SUCCESS";
 export const FETCH_PROFILE_FAILED = "FETCH_PROFILE_FAILED";
+export const LOAD_PROFILE_TERMINATED = "LOAD_PROFILE_TERMINATED";
 
 // Action de connexion réussie
 export function loginSuccess() {
@@ -15,12 +16,15 @@ function loginFailed(errorMessage) {
 }
 
 // Action pour récupérer le profil utilisateur
-function fetchProfile() {
+export function fetchProfile() {
   return async function (dispatch) {
     try {
       const token =
         localStorage.getItem("token") || sessionStorage.getItem("token");
-      if (!token) return;
+      if (!token) {
+        dispatch({type: "LOAD_PROFILE_TERMINATED"});
+        return;
+      }
 
       const response = await fetch(
         `${import.meta.env.VITE_BACK_URL}/user/profile`,
@@ -35,19 +39,22 @@ function fetchProfile() {
       // Si la connexion réussie
       if (response.status === 200) {
         const userProfile = await response.json();
-        dispatch({ type: FETCH_PROFILE_SUCCESS, payload: userProfile });
+        dispatch({ type: FETCH_PROFILE_SUCCESS, payload: userProfile.body });
+        dispatch(loginSuccess())
       } else {
         dispatch({
           type: FETCH_PROFILE_FAILED,
           payload: "Failed to fetch user profile",
         });
       }
+      dispatch({type: "LOAD_PROFILE_TERMINATED"});
     } catch (error) {
       console.error("Error fetching user profile:", error);
       dispatch({
         type: FETCH_PROFILE_FAILED,
         payload: "An error occurred while fetching user profile",
       });
+      dispatch({type: "LOAD_PROFILE_TERMINATED"});
     }
   };
 }
