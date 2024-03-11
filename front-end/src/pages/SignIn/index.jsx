@@ -1,10 +1,14 @@
 import "./signin.css";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { userLogin } from "../../redux/actions/user.action.js";
 
 export default function SignIn() {
+  useEffect(() => {
+    document.title = "ArgentBank - Sign In";
+  }, []);
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [rememberMe, setRememberMe] = useState(false);

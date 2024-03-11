@@ -23,11 +23,19 @@
     margin-right: 0.5rem;
   }
 
+  a {
+    text-decoration: none;
+  }
   .main-nav-name {
-    /* cursor: pointer; */
+    cursor: pointer;
+    margin-right: 25px;
+    font-weight: bold;
+    color: #2c3e50;
   }
 
   .main-nav-logout {
+    display: flex;
+    align-items: center;
     background: none;
     border: none;
     font-weight: bold;
@@ -53,8 +61,4 @@
   .user-logout {
     display: flex;
     align-items: center;
-  }
-  .user-logout p{
-    margin: 0;
-    padding-right: 25px;
   }

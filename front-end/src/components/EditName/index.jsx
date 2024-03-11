@@ -1,16 +1,27 @@
 // EditName.js
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import "./editname.css";
+import { putNewUserName } from "../../redux/actions/user.action";
+import { useState } from "react";
 
 export default function EditName({ closeModal }) {
+  const dispatch = useDispatch();
+
+  const [newUserName, setNewUserName] = useState("");
+
   const handleSubmitForm = async (e) => {
     e.preventDefault();
+    dispatch(putNewUserName(newUserName));
+    setNewUserName("");
   };
 
   const isDisabled = true;
 
   const fistName = useSelector((state) => state.user.userProfile?.firstName);
   const lastName = useSelector((state) => state.user.userProfile?.lastName);
+  const userName = useSelector((state) => state.user.userProfile?.userName);
+
+  const handleNewUserName = (e) => setNewUserName(e.target.value);
 
   return (
     <div className="edit-user">
@@ -18,7 +29,13 @@ export default function EditName({ closeModal }) {
       <form className="form" onSubmit={handleSubmitForm}>
         <div className="input-text">
           <label htmlFor="UserName">User name:</label>
-          <input type="text" id="UserName" />
+          <input
+            type="text"
+            id="UserName"
+            placeholder={userName}
+            value={newUserName}
+            onChange={handleNewUserName}
+          />
         </div>
         <div className="input-text">
           <label htmlFor="FirstName">First name:</label>

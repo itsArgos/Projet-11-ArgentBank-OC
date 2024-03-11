@@ -6,6 +6,10 @@ import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 export default function Profile() {
+  useEffect(() => {
+    document.title = "ArgentBank - Profile";
+  }, []);
+
   const [modalOpen, setModalOpen] = useState(false);
   const navigate = useNavigate();
 
